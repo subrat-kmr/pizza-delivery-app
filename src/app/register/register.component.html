@@ -1,0 +1,100 @@
+<div style="display: flex;
+justify-content: center;">
+<div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+  <div class="relative m-2.5 items-center flex justify-center text-white h-24 rounded-md bg-slate-800">
+    <h3 class="text-2xl">
+      Sign Up
+    </h3>
+  </div>
+    <div class="p-4">
+      <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+        Sign Up to unlock awesome benefits
+      </h6>
+      <div class="flex justify-center items-center">
+        <div class="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md w-80">
+            <h2 class="text-lg font-bold mb-4">Registration Form</h2>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="username">Username:</label>
+                <input 
+                  formControlName="username" 
+                  type="text" 
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+                <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+                  <p class="text-red-500" *ngIf="registerForm.get('username')?.errors?.['required']">
+                    Username is required.
+                  </p>
+                  <p class="text-red-500" *ngIf="registerForm.get('username')?.errors?.['minlength']">
+                    Username must be at least 4 characters.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="email">Email:</label>
+                <input 
+                  formControlName="email" 
+                  type="email" 
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                  <p class="text-red-500" *ngIf="registerForm.get('email')?.errors?.['required']">
+                    Email is required.
+                  </p>
+                  <p class="text-red-500" *ngIf="registerForm.get('email')?.errors?.['email']">
+                    Invalid email format.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="password">Password:</label>
+                <input 
+                  formControlName="password" 
+                  type="password" 
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                  <p class="text-red-500" *ngIf="registerForm.get('password')?.errors?.['required']">
+                    Password is required.
+                  </p>
+                  <p class="text-red-500" *ngIf="registerForm.get('password')?.errors?.['minlength']">
+                    Password must be at least 8 characters.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label class="block text-gray-600 mb-2" for="address">Address:</label>
+                <input 
+                  formControlName="address" 
+                  type="text" 
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+                <div *ngIf="address?.invalid && (address?.dirty || address?.touched)">
+                  <p class="text-red-500" *ngIf="registerForm.get('address')?.errors?.['required']">
+                    Address is required.
+                  </p>
+                </div>
+              </div>
+              
+              <button 
+                type="submit" 
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                [disabled]="!registerForm.valid"
+              >
+                Register
+              </button>
+            </form>
+          </div>
+      </div>
+    </div>
+    <!-- <div class="px-4 pb-4 pt-0 mt-2">
+        {{button.options}}
+      <button (click)="setButton()" class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none float-end" type="button">
+        {{button.name}}
+      </button>
+    </div> -->
+  </div> 
+</div>

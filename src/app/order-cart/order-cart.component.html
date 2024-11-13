@@ -1,0 +1,37 @@
+<div class="w-[100%] p-10 ">
+    <ul class="flex flex-col w-full">
+        <li class="relative flex flex-col gap-2 h-28" *ngFor="let cart of pizzaCart">
+            <div
+                class="relative flex items-center gap-4 py-3 pl-4 pr-8 bg-white border shadow-lg rounded-xl border-blue-gray-50 shadow-blue-gray-900/5">
+                <div class="flex flex-col gap-1">
+                    <ul class="flex flex-col w-full">
+                        <li class="relative flex flex-col gap-2">
+                            <div>
+                                <div class="flex flex-col gap-1">
+                                    <h6
+                                        class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+                                        {{cart.name}} - {{cart.description}}
+                                    </h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+                        Quantity : {{cart.quantity}}
+                    </p>
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+                        Price per Each : {{cart.price}}
+                    </p>
+                </div>
+                <div
+                    class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900 ml-auto">
+                    Total Price - {{cart?.quantity * cart.price}} ₹
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div
+        class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900 ml-auto">
+        Total Price - {{totalPizzaValue}}
+    </div>
+</div>

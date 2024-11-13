@@ -1,0 +1,51 @@
+<div class="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-3 xl:gap-4">
+  <div *ngFor="let pizza of totalPizza$ | async" 
+       class="flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg w-full md:w-64 xl:w-2/8">
+    <div class="relative p-2.5 h-96 overflow-hidden rounded-xl bg-clip-border">
+      <img loading="lazy" [src]="pizza.imageUrl" 
+           alt="card-image" 
+           class="h-full w-full object-cover rounded-md" />
+    </div>
+    <div class="p-4">
+      <div class="mb-2 flex items-center justify-between">
+        <p class="text-slate-800 text-xl font-semibold">{{pizza.name}}</p>
+        <p class="text-cyan-600 text-xl font-semibold">{{pizza.price}} ₹</p>
+      </div>
+      <p class="text-slate-600 leading-normal font-light">
+        {{pizza.description}}
+      </p>
+      <div [ngSwitch]="pizza.addedToCart">
+        <button *ngSwitchCase="false" 
+                type="button" 
+                class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                (click)="addToCart(pizza)">
+          Add to Cart
+        </button>
+        <div *ngSwitchCase="true">
+          <div class="flex items-center justify-between mt-6">
+            <div class="flex items-center border border-slate-200 rounded-md">
+              <button type="button" 
+                      class="px-2 py-1 text-slate-600"
+                      (click)="decrementQuantity(pizza)">
+                -
+              </button>
+              <p class="px-2 py-1 text-slate-600">{{ pizza.quantity || 0 }}</p>
+              <button type="button" 
+                      class="px-2 py-1 text-slate-600"
+                      (click)="incrementQuantity(pizza)">
+                +
+              </button>
+            </div>
+            <button type="button" 
+                    class="ml-4 rounded-md py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    [class.bg-cyan-600]="pizza.quantity > 0"
+                    [class.bg-slate-400]="pizza.quantity === 0"
+                    (click)="updateCart(pizza)">
+              Update Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

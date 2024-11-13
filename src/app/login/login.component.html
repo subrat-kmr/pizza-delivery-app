@@ -1,0 +1,75 @@
+<div style="display: flex;
+justify-content: center;">
+<div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+  <div *ngIf="!loogedInUser" class="relative m-2.5 items-center flex justify-center text-white h-24 rounded-md bg-slate-800">
+    <h3 class="text-2xl">
+      Log In
+    </h3>
+  </div>
+  <div class="relative flex w-full p-3 pr-12 text-sm text-black bg-green-500 rounded-md" *ngIf="loogedInUser">
+    Logged In Success Fully
+    <button class="flex items-center justify-center transition-all w-8 h-8 rounded-md text-black hover:bg-white/10 active:bg-white/10 absolute top-1.5 right-1.5" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+  </div>
+    <div class="p-4">
+      <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+        Login to pizza delivery app
+      </h6>
+      <div class="flex justify-center items-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-80">
+          <h2 class="text-lg font-bold mb-4">Login</h2>
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="mb-4">
+              <label class="block text-gray-600 mb-2" for="userId">User ID</label>
+              <input 
+                type="text" 
+                id="userId" 
+                name="userId"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                [(ngModel)]="user.email"
+                required
+              />
+              <div *ngIf="loginForm.controls['email']?.invalid && (loginForm.controls['email']?.dirty || loginForm.controls['email']?.touched)">
+                <p class="text-red-500" *ngIf="loginForm.controls['email']?.errors?.['required']">
+                  User ID is required.
+                </p>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-600 mb-2" for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                [(ngModel)] = user.password
+                required
+              />
+              <div *ngIf="loginForm.controls['password']?.invalid && (loginForm.controls['password']?.dirty || loginForm.controls['password']?.touched)">
+                <p class="text-red-500" *ngIf="loginForm.controls['password']?.errors?.['required']">
+                  Password is required.
+                </p>
+              </div>
+            </div>
+            <button 
+              type="submit" 
+              class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              [disabled]="!loginForm.valid"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="px-4 pb-4 pt-0 mt-2">
+        {{button.options}}
+      <button (click)="setButton()" class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none float-end" type="button">
+        {{button.name}}
+      </button>
+    </div> -->
+  </div> 
+</div>

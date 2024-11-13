@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.welcome {
+    background: #005491;
+    color: white;
+    display: flex;
+    font-size: 50px;
+    align-items: center;
+    justify-content: space-between;
+}

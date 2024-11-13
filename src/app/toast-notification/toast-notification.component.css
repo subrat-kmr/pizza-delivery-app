@@ -1,0 +1,7 @@
+.toast-notification {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 4px;
+    z-index: 1000;
+  }
